@@ -8,7 +8,7 @@ in this [repository](https://github.com/sentinel-hub/water-observatory-frontend)
 
 ## Blogs
 
-* [Global earth observation service from your laptop](https://medium.com/sentinel-hub/global-earth-observation-service-from-your-laptop-23157680cf5e
+* [Global earth observation service from your laptop](https://medium.com/sentinel-hub/global-earth-observation-service-from-your-laptop-23157680cf5e)
 * [BLUEDOT - Water Resource Monitoring from Space](https://medium.com/sentinel-hub/bluedot-eo-solution-for-water-resources-monitoring-d7663c21af16)
 
 ## Twitter
