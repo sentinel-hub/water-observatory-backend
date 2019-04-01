@@ -10,6 +10,7 @@ in this [repository](https://github.com/sentinel-hub/water-observatory-frontend)
 
 * [Global earth observation service from your laptop](https://medium.com/sentinel-hub/global-earth-observation-service-from-your-laptop-23157680cf5e)
 * [BLUEDOT - Water Resource Monitoring from Space](https://medium.com/sentinel-hub/bluedot-eo-solution-for-water-resources-monitoring-d7663c21af16)
+* [BlueDot Observatory – keeping an eye on our planet’s water resources](https://aws.amazon.com/blogs/publicsector/bluedot-observatory-keeping-an-eye-on-our-planets-water-resources/) - Amazon Web Services Government, Education, & Nonprofits Blog
 
 ## Twitter
 
