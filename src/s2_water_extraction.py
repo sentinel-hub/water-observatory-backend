@@ -170,8 +170,8 @@ def surface_water_area_with_dem_veto(measurement, the_dam_nominal, the_dam_bbox,
         dam_vetoed = apply_DEM_veto(get_optical_data(get_DEM_request(the_dam_bbox, resx, resy)),
                                     the_dam_nominal, loads(measurement.GEOMETRY), the_dam_bbox, resx, resy, 
                                     dem_threshold, simplify=True)
-        water_level_dem.SURF_WATER_LEVEL = dam_vetoed[0].area/the_dam_nominal.area
-        water_level_dem.GEOMETRY = dam_vetoed[0].wkt
+        water_level_dem.SURF_WATER_LEVEL = dam_vetoed.area/the_dam_nominal.area
+        water_level_dem.GEOMETRY = dam_vetoed.wkt
         del dam_vetoed
     except (DownloadFailedException, ImageDecodingError):
         set_measurement_status(water_level_dem, WaterDetectionStatus.SH_REQUEST_ERROR)

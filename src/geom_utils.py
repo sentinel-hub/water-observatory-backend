@@ -104,9 +104,8 @@ def apply_DEM_veto(dem, dam_nominal, dam_current, dam_bbox, resx, resy, dem_thre
     
     dem_masked = ma.masked_array(dem, mask=np.logical_not(wb_nominal))
     
-    dem_valid = dem<ma.mean(dem_masked)+dem_threshold
+    dem_valid = dem<(ma.mean(dem_masked)+dem_threshold)
     dem_valid = np.logical_or(dem_valid, wb_nominal)
-    
     wb_current = np.logical_and(dem_valid, wb_current)
-    
+
     return get_water_extent(wb_current.astype(np.uint8), dam_nominal, dam_bbox, simplify)
