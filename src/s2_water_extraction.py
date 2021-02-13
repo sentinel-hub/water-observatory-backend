@@ -31,6 +31,35 @@ S2_MIN_VALID_FRACTION = 0.98
 S2_MAX_CLOUD_COVERAGE = 0.20
 S2_CLOUD_BANDS_SCRIPT = 'return [B01,B02,B04,B05,B08,B8A,B09,B10,B11,B12]'
 
+S2_CLOUD_BANDS_SCRIPT_V3 = """
+    //VERSION=3
+    function setup() {
+        return {
+            input: [{
+                bands: ["B01", "B02", "B04", "B05", "B08","B8A", "B09", "B10", "B11", "B12", "dataMask"],
+            }],
+            output: {
+                bands: 11,
+                sampleType: "FLOAT32"
+            }
+        };
+    }
+
+    function evaluatePixel(sample) {
+        return [sample.B01,
+                sample.B02,
+                sample.B04,
+                sample.B05,
+                sample.B08,
+                sample.B8A,
+                sample.B09,
+                sample.B10,
+                sample.B11,
+                sample.B12,
+				sample.dataMask];
+    }
+"""
+
 def get_water_mask_from_S2(ndwi, canny_sigma=4, canny_threshold=0.3, selem=disk(4)):
     """
     Make water detection on input NDWI single band image.
@@ -102,7 +131,7 @@ def extract_surface_water_area_per_frame(dam_id, dam_poly, dam_bbox, date, resx,
         wcs_bands_request = WcsRequest(layer='NDWI', bbox=dam_bbox, time=date.strftime('%Y-%m-%d'), maxcc=S2_MAX_CC,
                                        resx=f'{cloudresx}m', resy=f'{cloudresy}m', image_format=MimeType.TIFF_d32f,
                                        time_difference=timedelta(hours=2),
-                                       custom_url_params={CustomUrlParam.EVALSCRIPT: S2_CLOUD_BANDS_SCRIPT})
+                                       custom_url_params={CustomUrlParam.EVALSCRIPT: S2_CLOUD_BANDS_SCRIPT_V3})
 
     except (RuntimeError, DownloadFailedException):
         set_measurement_status(measurement, WaterDetectionStatus.SH_REQUEST_ERROR)
